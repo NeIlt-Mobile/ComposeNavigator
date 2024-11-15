@@ -2,11 +2,8 @@ package neilt.mobile.core.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.navigation.NavOptionsBuilder
 import kotlinx.coroutines.flow.Flow
 import neilt.mobile.core.navigation.internal.AndroidNavigator
-
-typealias NavOptions = NavOptionsBuilder.() -> Unit
 
 interface Navigator {
     val startDestination: Destination
