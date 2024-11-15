@@ -12,19 +12,37 @@ internal class AndroidNavigator(override val startDestination: Destination) : Na
     private val _navigationActions = Channel<NavigationAction>()
     override val navigationActions = _navigationActions.receiveAsFlow()
 
+    private var lastAction: NavigationAction? = null
+
+    private inline fun processNavigationAction(
+        action: NavigationAction,
+        block: () -> Unit,
+    ) {
+        if (action != lastAction) {
+            lastAction = action
+            block()
+        }
+    }
+
     override suspend fun navigateTo(
         destination: Destination,
         navOptions: NavOptions,
     ) {
-        _navigationActions.send(
-            NavigationAction.NavigateTo(
-                destination = destination,
-                navOptions = navOptions
+        val action = NavigationAction.NavigateTo(destination, navOptions)
+        processNavigationAction(action) {
+            _navigationActions.send(
+                NavigationAction.NavigateTo(
+                    destination = destination,
+                    navOptions = navOptions
+                )
             )
-        )
+        }
     }
 
     override suspend fun navigateUp() {
-        _navigationActions.send(NavigationAction.NavigateUp)
+        val action = NavigationAction.NavigateUp
+        processNavigationAction(action) {
+            _navigationActions.send(NavigationAction.NavigateUp)
+        }
     }
 }
