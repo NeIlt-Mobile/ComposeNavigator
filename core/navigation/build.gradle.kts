@@ -3,10 +3,16 @@ plugins {
 
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinCompose)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 dependencies {
+
+    // Compose
     implementation(libs.composeNavigation)
+
+    // KotlinX
+    implementation(libs.kotlinSerializationJson)
 }
 
 android {
