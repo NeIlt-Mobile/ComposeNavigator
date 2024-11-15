@@ -12,11 +12,7 @@ interface Navigator {
     val startDestination: Destination
     val navigationActions: Flow<NavigationAction>
 
-    suspend fun navigateTo(
-        destination: Destination,
-        navOptions: NavOptions = {}
-    )
-
+    suspend fun navigateTo(destination: Destination, navOptions: NavOptions = {})
     suspend fun navigateUp()
 }
 
