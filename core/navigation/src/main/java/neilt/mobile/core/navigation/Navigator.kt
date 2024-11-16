@@ -1,8 +1,6 @@
 package neilt.mobile.core.navigation
 
 import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.onFailure
 import kotlinx.coroutines.flow.Flow
@@ -82,16 +80,4 @@ class AndroidNavigator(override val startDestination: Destination) : Navigator {
             }
         }
     }
-}
-
-
-/**
- * Composable function for remembering a [Navigator] instance.
- *
- * @param startDestination The initial [Destination].
- * @return A remembered [Navigator] instance.
- */
-@Composable
-fun rememberNavigator(startDestination: Destination): Navigator {
-    return remember { AndroidNavigator(startDestination = startDestination) }
 }
