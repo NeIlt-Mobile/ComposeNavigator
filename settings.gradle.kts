@@ -1,4 +1,4 @@
-rootProject.name = "Section_Navigation_Compose"
+rootProject.name = "ComposeNavigator"
 
 pluginManagement {
     repositories {

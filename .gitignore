@@ -3,7 +3,6 @@
 
 # Ignore all .idea directories except some files and directories
 /.idea/*
-!.idea/.name
 !.idea/copyright/
 
 # Ignore .kotlin directory
