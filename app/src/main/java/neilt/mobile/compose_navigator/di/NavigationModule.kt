@@ -22,11 +22,14 @@
  * SOFTWARE.
  */
 
-package neilt.mobile.core.navigation
+package neilt.mobile.compose_navigator.di
 
-import androidx.navigation.NavOptionsBuilder
+import neilt.mobile.core.navigation.AndroidNavigator
+import neilt.mobile.core.navigation.Navigator
+import neilt.mobile.compose_navigator.ui.navigation.AndroidDestination
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
-/**
- * Typealias for a lambda function used to configure [NavOptionsBuilder] when navigating.
- */
-typealias NavOptions = NavOptionsBuilder.() -> Unit
+val navigationModule = module {
+    single { AndroidNavigator(AndroidDestination.MainSection) } bind Navigator::class
+}

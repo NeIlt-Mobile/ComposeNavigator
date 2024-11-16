@@ -22,11 +22,20 @@
  * SOFTWARE.
  */
 
-package neilt.mobile.core.navigation
+package neilt.mobile.compose_navigator.ui.theme
 
-import androidx.navigation.NavOptionsBuilder
+import androidx.compose.material3.Typography
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
-/**
- * Typealias for a lambda function used to configure [NavOptionsBuilder] when navigating.
- */
-typealias NavOptions = NavOptionsBuilder.() -> Unit
+val Typography = Typography(
+    bodyLarge = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp,
+    ),
+)

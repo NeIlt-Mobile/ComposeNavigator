@@ -22,11 +22,22 @@
  * SOFTWARE.
  */
 
-package neilt.mobile.core.navigation
+package neilt.mobile.compose_navigator
 
-import androidx.navigation.NavOptionsBuilder
+import android.app.Application
+import neilt.mobile.compose_navigator.di.navigationModule
+import neilt.mobile.compose_navigator.di.viewModelModule
+import org.koin.core.context.startKoin
 
-/**
- * Typealias for a lambda function used to configure [NavOptionsBuilder] when navigating.
- */
-typealias NavOptions = NavOptionsBuilder.() -> Unit
+class AndroidApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            modules(
+                navigationModule,
+                viewModelModule,
+            )
+        }
+    }
+}

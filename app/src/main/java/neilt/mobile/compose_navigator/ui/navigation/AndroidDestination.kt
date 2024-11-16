@@ -22,11 +22,23 @@
  * SOFTWARE.
  */
 
-package neilt.mobile.core.navigation
+package neilt.mobile.compose_navigator.ui.navigation
 
-import androidx.navigation.NavOptionsBuilder
+import kotlinx.serialization.Serializable
+import neilt.mobile.core.navigation.Destination
 
-/**
- * Typealias for a lambda function used to configure [NavOptionsBuilder] when navigating.
- */
-typealias NavOptions = NavOptionsBuilder.() -> Unit
+sealed interface AndroidDestination : Destination {
+
+    @Serializable
+    data object MainSection : AndroidDestination {
+
+        @Serializable
+        data object HomeScreen : AndroidDestination
+
+        @Serializable
+        data object ExploreScreen : AndroidDestination
+
+        @Serializable
+        data object ProfileScreen : AndroidDestination
+    }
+}

@@ -22,11 +22,12 @@
  * SOFTWARE.
  */
 
-package neilt.mobile.core.navigation
+package neilt.mobile.compose_navigator.di
 
-import androidx.navigation.NavOptionsBuilder
+import neilt.mobile.compose_navigator.ui.screens.root.RootViewModel
+import org.koin.core.module.dsl.viewModelOf
+import org.koin.dsl.module
 
-/**
- * Typealias for a lambda function used to configure [NavOptionsBuilder] when navigating.
- */
-typealias NavOptions = NavOptionsBuilder.() -> Unit
+val viewModelModule = module {
+    viewModelOf(::RootViewModel)
+}

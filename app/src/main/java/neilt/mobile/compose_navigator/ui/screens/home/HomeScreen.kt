@@ -22,11 +22,12 @@
  * SOFTWARE.
  */
 
-package neilt.mobile.core.navigation
+package neilt.mobile.compose_navigator.ui.screens.home
 
-import androidx.navigation.NavOptionsBuilder
+import androidx.compose.runtime.Composable
+import neilt.mobile.compose_navigator.ui.screens.base.BaseScreen
 
-/**
- * Typealias for a lambda function used to configure [NavOptionsBuilder] when navigating.
- */
-typealias NavOptions = NavOptionsBuilder.() -> Unit
+@Composable
+fun HomeScreen() {
+    BaseScreen("HomeScreen")
+}

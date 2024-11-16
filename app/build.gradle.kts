@@ -35,11 +35,11 @@ dependencies {
 }
 
 android {
-    namespace = "neilt.mobile.section_navigation_compose"
+    namespace = "neilt.mobile.compose_navigator"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "neilt.mobile.section_navigation_compose"
+        applicationId = "neilt.mobile.compose_navigator"
 
         minSdk = 24
         targetSdk = 35
