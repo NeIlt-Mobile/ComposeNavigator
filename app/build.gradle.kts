@@ -29,6 +29,9 @@ dependencies {
 
     implementation(libs.composeNavigation)
     implementation(libs.composeMaterial)
+
+    // KotlinX
+    implementation(libs.kotlinSerializationJson)
 }
 
 android {
