@@ -4,16 +4,34 @@
 androidGradlePlugin = "8.7.2"
 kotlinGradlePlugin = "2.0.21"
 
+# Koin
+koinBom = "4.0.0"
+
 # Compose
+composeBom = "2024.11.00"
 composeNavigation = "2.8.4"
 
 # KotlinX
 kotlinSerializationJson = "1.7.3"
 
+
 [libraries]
 
+# Koin
+koinBom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koinBom" }
+koinCore = { group = "io.insert-koin", name = "koin-core" }
+koinAndroid = { group = "io.insert-koin", name = "koin-android" }
+koinAndroidCompose = { group = "io.insert-koin", name = "koin-androidx-compose" }
+
 # Compose
+composeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+
+composeUi = { group = "androidx.compose.ui", name = "ui" }
+composeUiGraphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+composeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+
 composeNavigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
+composeMaterial = { group = "androidx.compose.material3", name = "material3" }
 
 # KotlinX
 kotlinSerializationJson = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJson" }
