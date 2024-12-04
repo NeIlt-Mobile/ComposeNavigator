@@ -12,7 +12,7 @@ plugins {
 dependencies {
 
     // Navigation
-    implementation(project(":core:navigation"))
+    implementation(projects.navigator)
 
     // Koin
     implementation(platform(libs.koinBom))
@@ -35,11 +35,11 @@ dependencies {
 }
 
 android {
-    namespace = "neilt.mobile.compose_navigator"
+    namespace = "neilt.mobile.navigator.app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "neilt.mobile.compose_navigator"
+        applicationId = "neilt.mobile.navigator.app"
 
         minSdk = 24
         targetSdk = 35
