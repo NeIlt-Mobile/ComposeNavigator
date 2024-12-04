@@ -52,6 +52,47 @@ interface Navigator {
      * Navigates up in the navigation stack.
      */
     suspend fun navigateUp()
+
+    /**
+     * Sets a new root destination, clearing all previous destinations in the stack.
+     *
+     * @param destination The [Destination] to set as the new root.
+     */
+    suspend fun setRoot(destination: Destination)
+
+    /**
+     * Replaces the current destination with a new one.
+     *
+     * @param destination The [Destination] to replace the current one with.
+     */
+    suspend fun replace(destination: Destination)
+
+    /**
+     * Navigates back to a specific [Destination] in the stack.
+     * If the destination is not found, it clears the stack.
+     *
+     * @param destination The [Destination] to navigate back to, or `null` to clear the stack entirely.
+     */
+    suspend fun backTo(destination: Destination?)
+
+    /**
+     * Starts a new chain of destinations, replacing the current navigation stack.
+     *
+     * @param destinations A list of [Destination] objects representing the new navigation chain.
+     */
+    suspend fun startChain(destinations: List<Destination>)
+
+    /**
+     * Resets the navigation stack with a new chain of destinations.
+     *
+     * @param destinations A list of [Destination] objects representing the new navigation chain.
+     */
+    suspend fun resetChain(destinations: List<Destination>)
+
+    /**
+     * Completes the navigation flow and removes the current destination.
+     */
+    suspend fun finish()
 }
 
 /**
@@ -101,6 +142,83 @@ class AndroidNavigator(override val startDestination: Destination) : Navigator {
         handleAction(NavigationAction.NavigateUp) {
             _navigationActions.trySend(it).onFailure { error ->
                 Log.e("AndroidNavigator", "Failed to enqueue navigate up action: $error")
+            }
+        }
+    }
+
+    /**
+     * Sets a new root destination, clearing all previous destinations in the stack.
+     *
+     * @param destination The [Destination] to set as the new root.
+     */
+    override suspend fun setRoot(destination: Destination) {
+        handleAction(NavigationAction.SetRoot(destination)) {
+            _navigationActions.trySend(it).onFailure { error ->
+                Log.e("AndroidNavigator", "Failed to set root: $error")
+            }
+        }
+    }
+
+    /**
+     * Replaces the current destination with a new one.
+     *
+     * @param destination The [Destination] to replace the current one with.
+     */
+    override suspend fun replace(destination: Destination) {
+        handleAction(NavigationAction.Replace(destination)) {
+            _navigationActions.trySend(it).onFailure { error ->
+                Log.e("AndroidNavigator", "Failed to replace: $error")
+            }
+        }
+    }
+
+    /**
+     * Navigates back to a specific [Destination] in the stack.
+     * If the destination is not found, it clears the stack.
+     *
+     * @param destination The [Destination] to navigate back to, or `null` to clear the stack entirely.
+     */
+    override suspend fun backTo(destination: Destination?) {
+        handleAction(NavigationAction.BackTo(destination)) {
+            _navigationActions.trySend(it).onFailure { error ->
+                Log.e("AndroidNavigator", "Failed to back to: $error")
+            }
+        }
+    }
+
+    /**
+     * Starts a new chain of destinations, replacing the current navigation stack.
+     *
+     * @param destinations A list of [Destination] objects representing the new navigation chain.
+     */
+    override suspend fun startChain(destinations: List<Destination>) {
+        handleAction(NavigationAction.StartChain(destinations)) {
+            _navigationActions.trySend(it).onFailure { error ->
+                Log.e("AndroidNavigator", "Failed to start chain: $error")
+            }
+        }
+    }
+
+    /**
+     * Resets the navigation stack with a new chain of destinations.
+     *
+     * @param destinations A list of [Destination] objects representing the new navigation chain.
+     */
+    override suspend fun resetChain(destinations: List<Destination>) {
+        handleAction(NavigationAction.ResetChain(destinations)) {
+            _navigationActions.trySend(it).onFailure { error ->
+                Log.e("AndroidNavigator", "Failed to reset chain: $error")
+            }
+        }
+    }
+
+    /**
+     * Completes the navigation flow and removes the current destination.
+     */
+    override suspend fun finish() {
+        handleAction(NavigationAction.Finish) {
+            _navigationActions.trySend(it).onFailure { error ->
+                Log.e("AndroidNavigator", "Failed to finish chain: $error")
             }
         }
     }

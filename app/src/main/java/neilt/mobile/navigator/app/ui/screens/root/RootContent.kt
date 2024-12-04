@@ -89,6 +89,41 @@ private fun ObserveNavigationEvents(navigator: Navigator, navController: NavCont
             }
 
             is NavigationAction.NavigateUp -> navController.navigateUp()
+
+            is NavigationAction.SetRoot -> {
+                navController.navigate(action.destination) {
+                    popUpTo(0) { inclusive = true }
+                }
+            }
+
+            is NavigationAction.Replace -> {
+                navController.navigate(action.destination) {
+                    popUpTo(navController.graph.startDestinationId) { inclusive = true }
+                }
+            }
+
+            is NavigationAction.BackTo -> {
+                action.destination?.let {
+                    navController.popBackStack(it, inclusive = false)
+                } ?: navController.popBackStack()
+            }
+
+            is NavigationAction.StartChain -> {
+                action.destinations.forEach {
+                    navController.navigate(it)
+                }
+            }
+
+            is NavigationAction.ResetChain -> {
+                navController.popBackStack(0, inclusive = true)
+                action.destinations.forEach {
+                    navController.navigate(it)
+                }
+            }
+
+            is NavigationAction.Finish -> navController.popBackStack(0, inclusive = true)
+
+            else -> Unit
         }
     }
 }

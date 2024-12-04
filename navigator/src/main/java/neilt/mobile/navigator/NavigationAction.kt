@@ -44,4 +44,44 @@ sealed interface NavigationAction {
      * Navigation action for navigating up in the navigation stack.
      */
     data object NavigateUp : NavigationAction
+
+    /**
+     * Navigation action to set a new root destination, clearing all previous destinations.
+     *
+     * @property destination The [Destination] to set as the new root.
+     */
+    data class SetRoot(val destination: Destination) : NavigationAction
+
+    /**
+     * Navigation action to replace the current destination with a new one.
+     *
+     * @property destination The [Destination] to replace the current one with.
+     */
+    data class Replace(val destination: Destination) : NavigationAction
+
+    /**
+     * Navigation action to navigate back to a specific destination in the stack.
+     *
+     * @property destination The [Destination] to navigate back to, or `null` to clear the stack.
+     */
+    data class BackTo(val destination: Destination?) : NavigationAction
+
+    /**
+     * Navigation action to start a new chain of destinations, replacing the current stack.
+     *
+     * @property destinations A list of [Destination] objects for the new navigation chain.
+     */
+    data class StartChain(val destinations: List<Destination>) : NavigationAction
+
+    /**
+     * Navigation action to reset the navigation stack with a new chain of destinations.
+     *
+     * @property destinations A list of [Destination] objects for the new navigation chain.
+     */
+    data class ResetChain(val destinations: List<Destination>) : NavigationAction
+
+    /**
+     * Navigation action to finish the current navigation flow.
+     */
+    data object Finish : NavigationAction
 }
