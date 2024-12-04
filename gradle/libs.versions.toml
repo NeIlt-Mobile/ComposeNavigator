@@ -1,8 +1,8 @@
 [versions]
 
 # Gradle Plugins
-androidGradlePlugin = "8.7.2"
-kotlinGradlePlugin = "2.0.21"
+androidGradlePlugin = "8.7.3"
+kotlinGradlePlugin = "2.1.0"
 
 # Koin
 koinBom = "4.0.0"

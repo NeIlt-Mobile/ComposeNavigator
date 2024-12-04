@@ -1,5 +1,7 @@
 rootProject.name = "ComposeNavigator"
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     repositories {
         google {
@@ -23,4 +25,4 @@ dependencyResolutionManagement {
 }
 
 include(":app")
-include(":core:navigation")
+include(":navigator")
