@@ -120,7 +120,7 @@ viewModel.navigateTo(AndroidDestination.MainSection.HomeScreen)
 
 ## Example Project
 
-For a practical implementation of this library, refer to the PixivCompose project. This repository demonstrates how to integrate and use the Navigation Core Library in a real-world application.
+For a practical implementation of this library, refer to the [PixivCompose](https://github.com/AnyGogin31/PixivCompose) project. This repository demonstrates how to integrate and use the Navigation Core Library in a real-world application.
 
 ---
 
